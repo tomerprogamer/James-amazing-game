@@ -1,31 +1,55 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelSpawn : MonoBehaviour
 {
-    public GameObject Template;
-    public GameObject TemplateEmpty;
     public GameObject SpawnTo;
+    public GameObject[] Levels;
+    public float[] Lengths;
+    public float Speed = 50;
+    public int MaxCities = 5;
+    private int nextLevel = 0;
     private float DistanceTravelled = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private List<GameObject> spawnedCities = new List<GameObject>();
+
     void Start()
     {
-        GameObject Spawned = Instantiate(Template, SpawnTo.transform.position, Quaternion.identity, transform);
-        SpawnTo.transform.position += new Vector3(0, 0, -199.4f);
-        GameObject Spawned1 = Instantiate(Template, SpawnTo.transform.position, Quaternion.identity, transform);
-        SpawnTo.transform.position += new Vector3(0, 0, -199.4f);
-        GameObject Spawned2 = Instantiate(Template, SpawnTo.transform.position, Quaternion.identity, transform);
-        SpawnTo.transform.position += new Vector3(0, 0, -199.4f);
+        SpawnNextLevel();
+
+        for (int i = 0; i < 2; i++)
+        {
+            SpawnTo.transform.position += new Vector3(0, 0, -Lengths[nextLevel]);
+            SpawnNextLevel();
+        }
+        DistanceTravelled = transform.position.z;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0, 0, 50 * Time.deltaTime);
+        transform.position += new Vector3(0, 0, Speed * Time.deltaTime);
 
-        if (transform.position.z - DistanceTravelled >= 199.3f)
+        if (transform.position.z - DistanceTravelled >= Lengths[nextLevel])
         {
-            DistanceTravelled = transform.position.z;
-            GameObject Spawned = Instantiate(Template, SpawnTo.transform.position, Quaternion.identity, transform);
+            DistanceTravelled += Lengths[nextLevel];
+            SpawnNextLevel();
+        }
+    }
+
+    void SpawnNextLevel()
+    {
+        GameObject city = Instantiate(Levels[nextLevel], SpawnTo.transform.position, Quaternion.identity, transform);
+        spawnedCities.Add(city);
+
+        if (spawnedCities.Count > MaxCities)
+        {
+            Destroy(spawnedCities[0]);
+            spawnedCities.RemoveAt(0);
+        }
+
+        nextLevel = nextLevel + 1;
+        if (nextLevel >= Levels.Length)
+        {
+            nextLevel = 0;
         }
     }
 }
