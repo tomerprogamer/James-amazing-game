@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -11,10 +13,19 @@ public class playerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
     public float rotationY;
-    
+
+    private bool alive;
     // Update is called once per frame
-    
+    void Start()
+    {
+        alive = true; 
+    }
     void Update()
+    {
+        //handleMovement();
+    }
+
+    private void FixedUpdate()
     {
         handleMovement();
     }
@@ -29,10 +40,16 @@ public class playerMovement : MonoBehaviour
         transform.Translate(moveDirection*speeD* Time.deltaTime);
     }
 
-   private void handleRotation()
-   {
+//   private void handleRotation()
+ //  {
        // float mouseX = Input.GetAxis("Mouse X");
      //   rotationY += mouseX * mouseSensetivity;
         //transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-    }
+  //  }
+
+   public static void Die()
+   {
+       //alive = false; 
+       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+   }
 }

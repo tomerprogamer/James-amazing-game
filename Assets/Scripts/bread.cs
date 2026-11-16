@@ -15,7 +15,7 @@ public class bread : MonoBehaviour
      void Update()
      {
 
-         float speed = -4;
-        transform.Translate(new Vector3(0f, 0f, speed*Time.deltaTime));
+     //    float speed = -4;
+     //   transform.Translate(new Vector3(0f, 0f, speed*Time.deltaTime));
     }
 }
