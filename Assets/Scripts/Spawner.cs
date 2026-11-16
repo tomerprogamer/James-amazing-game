@@ -21,9 +21,14 @@ public class Spawner : MonoBehaviour
     void SpawnObstacle()
     {
         int obstacleIndex = Random.Range(0, 5);
-        Transform spawnpoint =  transform.GetChild(obstacleIndex).transform;
+        float randomY = Random.Range(0, 3);
+        float targetX = transform.GetChild(obstacleIndex).transform.position.x;
+        Vector3 spawnPosition = new Vector3(targetX ,randomY, 0f);
         
-        Instantiate(obstacle, spawnpoint.position, Quaternion.identity,transform);
+        //Transform spawnpoint = transform.GetChild(obstacleIndex).transform;
+        
+        //Instantiate(obstacle, spawnpoint.position, Quaternion.identity,transform);
+        Instantiate(obstacle, spawnPosition, Quaternion.identity,transform);
         
     }
 

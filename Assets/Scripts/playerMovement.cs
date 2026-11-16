@@ -14,10 +14,12 @@ public class playerMovement : MonoBehaviour
     public float rotationY;
     public static int score;
     private bool alive;
+    
     // Update is called once per frame
     void Start()
     {
         alive = true; 
+        pipesScript.speed = -12;
         
     }
     void Update()

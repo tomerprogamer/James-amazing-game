@@ -11,7 +11,7 @@ public class bread : MonoBehaviour
         {
             Destroy(gameObject);
             print("hit bread");
-            playerMovement.score += 1;
+            pipesScript.speed -= 0.5f;
             coolname = GameObject.FindWithTag("Score").GetComponent<scoreScript>();
             coolname.addScore();
 
