@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class bread : MonoBehaviour
 {
+    
+    scoreScript coolname;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -10,10 +12,13 @@ public class bread : MonoBehaviour
             Destroy(gameObject);
             print("hit bread");
             playerMovement.score += 1;
+            coolname = GameObject.FindWithTag("Score").GetComponent<scoreScript>();
+            coolname.addScore();
+
         }
     }
 
-     void Update()
+    void Update()
      {
 
      //    float speed = -4;
