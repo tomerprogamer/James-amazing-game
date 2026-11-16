@@ -9,6 +9,7 @@ public class bread : MonoBehaviour
         {
             Destroy(gameObject);
             print("hit bread");
+            playerMovement.score += 1;
         }
     }
 

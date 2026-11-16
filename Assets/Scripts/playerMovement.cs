@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float speeD = 5f;
+    [SerializeField] public float speeD;
 
     
     [SerializeField]
@@ -13,12 +12,13 @@ public class playerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
     public float rotationY;
-
+    public static int score;
     private bool alive;
     // Update is called once per frame
     void Start()
     {
         alive = true; 
+        
     }
     void Update()
     {

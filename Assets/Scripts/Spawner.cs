@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
 
     void SpawnObstacle()
     {
-        int obstacleIndex = Random.Range(0, 4);
+        int obstacleIndex = Random.Range(0, 5);
         Transform spawnpoint =  transform.GetChild(obstacleIndex).transform;
         
         Instantiate(obstacle, spawnpoint.position, Quaternion.identity,transform);
