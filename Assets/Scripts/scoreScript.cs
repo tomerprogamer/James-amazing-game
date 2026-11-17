@@ -13,7 +13,7 @@ public class scoreScript : MonoBehaviour
 
     void Start()
     {
-        addScore();
+        //addScore();
     }
 
 }

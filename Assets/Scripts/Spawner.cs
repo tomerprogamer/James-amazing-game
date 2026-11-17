@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         SpawnObstacle();
+        pipesScript.speed = -12;
         StartCoroutine(spawnMeSomething());
     }
 

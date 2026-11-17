@@ -6,7 +6,7 @@ public class LevelSpawn : MonoBehaviour
     public GameObject SpawnTo;
     public GameObject[] Levels;
     public float[] Lengths;
-    public float Speed = 50;
+    //public float Speed = 50;
     
     public int MaxCities = 5;
     private int nextLevel = 0;

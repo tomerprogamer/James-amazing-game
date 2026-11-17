@@ -23,7 +23,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         alive = true; 
-        pipesScript.speed = -12;
+        
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         
@@ -44,7 +44,7 @@ public class playerMovement : MonoBehaviour
     {
 
             yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("menu");//SceneManager.GetActiveScene().name
 
     }
 
