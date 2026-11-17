@@ -1,10 +1,14 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class bread : MonoBehaviour
 {
     
     scoreScript coolname;
+    public Mesh [] modelArray;
+    public MeshFilter currentmodel;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -18,6 +22,10 @@ public class bread : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+            currentmodel.mesh = modelArray[Random.Range(0, modelArray.Length)];
+    }
     void Update()
      {
 

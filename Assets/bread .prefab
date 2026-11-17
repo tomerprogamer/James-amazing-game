@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4169654528294668558}
   - component: {fileID: 5209456589610741516}
   - component: {fileID: 4653717743196828336}
-  - component: {fileID: 6129707396975263641}
+  - component: {fileID: 8802454404042877509}
   m_Layer: 0
   m_Name: 'bread '
   m_TagString: Untagged
@@ -126,7 +126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9966ed0493a20c64f959ce861aff2388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!95 &6129707396975263641
+  modelArray:
+  - {fileID: -4868828543834913061, guid: e212ccc29b64bc94e94949e4902f1f03, type: 3}
+  - {fileID: -4130479084016971433, guid: 472f95c524e978943a52a0ff864c9251, type: 3}
+  - {fileID: -7625580649848781154, guid: f394430d130727845a294076139a57b7, type: 3}
+  currentmodel: {fileID: 6178514429172179171}
+--- !u!95 &8802454404042877509
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -136,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 5686777085541146492}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6cd0badc7937f8545b646f8e6d2b89b3, type: 2}
+  m_Controller: {fileID: 9100000, guid: fdecf9395a54da4499537416e20ef7aa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
