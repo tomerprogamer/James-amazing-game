@@ -19,6 +19,7 @@ public class killPlayer : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerMovement.Die();
+            pipesScript.speed = 0;
         }
     }
 }

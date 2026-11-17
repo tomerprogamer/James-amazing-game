@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,23 +15,51 @@ public class playerMovement : MonoBehaviour
     private Vector3 moveDirection;
     public float rotationY;
     public static int score;
-    private bool alive;
+    public static bool alive = true;
+    
+    private static Rigidbody rb;
     
     // Update is called once per frame
     void Start()
     {
         alive = true; 
         pipesScript.speed = -12;
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
         
     }
+    
+    public static void EnableGravity() {
+        rb.useGravity = true;
+        rb.mass = 1500f;
+        
+    }
+    
     void Update()
     {
         //handleMovement();
     }
 
+    static IEnumerator restartGame()
+    {
+
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
     private void FixedUpdate()
     {
-        handleMovement();
+        if (alive == true) {
+            handleMovement();
+        }
+        else if (alive == false)
+        {
+            Destroy(gameObject.GetComponent<BoxCollider>());
+            StartCoroutine(restartGame());
+        }
+
+
     }
 
     private void handleMovement()
@@ -41,17 +71,17 @@ public class playerMovement : MonoBehaviour
         
         transform.Translate(moveDirection*speeD* Time.deltaTime);
     }
-
-//   private void handleRotation()
- //  {
-       // float mouseX = Input.GetAxis("Mouse X");
-     //   rotationY += mouseX * mouseSensetivity;
-        //transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-  //  }
+    
 
    public static void Die()
    {
-       //alive = false; 
-       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       
+       
+       if (alive == true) {
+           alive = false;
+           EnableGravity();
+           
+       }
+       //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
    }
 }
