@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class scoreScript : MonoBehaviour
 {
     public TMP_Text scoreText;
@@ -9,7 +11,12 @@ public class scoreScript : MonoBehaviour
     {
         scoreCount += 1;
         scoreText.text = "Pastries: "+ scoreCount.ToString();
-    }
+
+        if (SceneManager.GetActiveScene().name == "goodName" && scoreCount >= 15)
+        {
+            SceneManager.LoadScene("scene1");
+        }
+    }   
 
     void Start()
     {
