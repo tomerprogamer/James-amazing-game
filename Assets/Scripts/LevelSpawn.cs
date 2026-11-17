@@ -7,6 +7,7 @@ public class LevelSpawn : MonoBehaviour
     public GameObject[] Levels;
     public float[] Lengths;
     public float Speed = 50;
+    
     public int MaxCities = 5;
     private int nextLevel = 0;
     private float DistanceTravelled = 0;
@@ -15,7 +16,7 @@ public class LevelSpawn : MonoBehaviour
     void Start()
     {
         SpawnNextLevel();
-
+        pipesScript.speed = -50;
         for (int i = 0; i < 2; i++)
         {
             SpawnTo.transform.position += new Vector3(0, 0, -Lengths[nextLevel]);
@@ -26,7 +27,7 @@ public class LevelSpawn : MonoBehaviour
 
     void Update()
     {
-        transform.position += new Vector3(0, 0, Speed * Time.deltaTime);
+        transform.position += new Vector3(0, 0, -pipesScript.speed * Time.deltaTime);
 
         if (transform.position.z - DistanceTravelled >= Lengths[nextLevel])
         {
