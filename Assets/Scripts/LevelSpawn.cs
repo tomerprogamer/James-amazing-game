@@ -46,10 +46,6 @@ public class LevelSpawn : MonoBehaviour
             spawnedCities.RemoveAt(0);
         }
 
-        nextLevel = nextLevel + 1;
-        if (nextLevel >= Levels.Length)
-        {
-            nextLevel = 0;
-        }
+        nextLevel = Random.Range(0, Levels.Length);
     }
 }
